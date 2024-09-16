@@ -102,3 +102,9 @@ Documentação oficial do Ansible [Link para página da documentação](https://
 #### **Autenticação**
 - **Usuário e Senha**: O Ansible pode autenticar usando um nome de usuário e senha. Ele também suporta autenticação via LDAP e Kerberos.
 - **Chave SSH**: Para servidores Linux, a autenticação pode ser feita usando chaves SSH, o que é considerado mais seguro e conveniente do que senhas.
+
+---
+# Dia 02
+
+---
+# Coming soon
