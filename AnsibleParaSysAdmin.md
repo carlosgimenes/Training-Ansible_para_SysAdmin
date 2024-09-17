@@ -1,7 +1,7 @@
 # Udemy - Ansible para SysAdmin
 
-### **Instrutor**: Phillipe Costa
-### **Linkedin**: Perfil do LinkedIn
+### **Instrutor**: Phillipe Farias
+### **Linkedin**: [Perfil do LinkedIn](https://www.linkedin.com/in/phillipefarias/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BPtMzH14qTjigHbvNZ3iQ6Q%3D%3D)
 ### **Página do curso na Udemy**: [Link para página do curso](https://www.udemy.com/course/ansible-para-sysadmin/?couponCode=ST11MT91624A)
 ### **Pasta Google Drive Treinamento**: [Link para pasta do curso](https://drive.google.com/drive/folders/1ywcCxGLRNvVvXWHoaUsbqN4OpvNxFlCG?usp=drive_link)
 ### **Início**: 16/09/2024
@@ -139,7 +139,7 @@ YAML Ain't Markup Language version 1.2 Revision 1.2.2 (2021-10-01) [Link para p�
   - **Listas**:
     - Contém valores em uma ordem específica
     - Cada item da lista começa com um traço (-) seguido de um espaço
-    - Itens da listasão separados por um recuo
+    - Itens da lista são separados por um recuo
 
 Documentação do YAML - Ansible [Link para página documentação YAML no Ansible](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
 
@@ -153,3 +153,9 @@ Documentação do YAML - Ansible [Link para página documentação YAML no Ansib
 - Ferramentas de automação como Ansible
 - Orquestração de conteiners com Kubernetes
 - Definição de pipelines em CI/CD (Integração Contínua/Entrega Contínua)
+
+---
+
+## Dia 03 - coming soon
+
+---
