@@ -31,30 +31,35 @@ Grupo Telegram: [Link para página do grupo no Telegram](https://t.me/+SBk6LHKdp
 
 ### O que é Ansible
 
-- Em ficção científica, Ansible é uma forma de comunicação superlumínica, inicialmente proposta por _**Ursula K**_ em seu livro _**Rocannon's Workd de 1966**_
-- Ferramenta de automação (Gestão de Configuração) Open Source
-- Desenvolvida por _**Michael DeHaan**_ (Red Hat)
-- Trabalha com quatro pilares:
-  - Gerenciamento de mudanças
-    - **Idempotente**: nunca irá fazer a mesma tarefa mais que uma vez
-    - **System State**: onde armazena o estado atual da máquina
-    - **Versões de aplicações**: consigo deixar o ambiente rodando com uma versão específica da minha aplicação
-    - **Alertas de mudanças**: caso tenha ocorrido alguma alteração no ambiente o Ansible consegue validar e gerar alertas desta mudança, permitindo voltar a uma versão anterior, garantindo que o ambiente esteja da forma que foi pré determinado
-  - Provisionamento
-    - Configuração
-    - Instalação
-    - Preparação
-    - Alteração do System State:
-  - Automação
-    - Execução de tarefas de forma automática
-      - Ordenação de tarefas (tasks)
-      - Realizar decisões
-      - Ad-hoc tasks
-  - Orquestração
-    - Múltiplos servidores
-    - Múltiplas aplicações
-    - Diferentes tarefas
-    - Ambiente híbrido
+- **Origem do Nome**: Em ficção científica, Ansible é uma forma de comunicação superlumínica, inicialmente proposta por Ursula K. Le Guin em seu livro _Rocannon's World_ de 1966.
+- **Ferramenta de Automação**: Ansible é uma ferramenta de automação de código aberto para gestão de configuração, provisionamento e orquestração.
+- **Desenvolvedor**: Criada por Michael DeHaan e mantida pela Red Hat.
+
+### Os Quatro Pilares do Ansible
+
+1. **Gerenciamento de Mudanças**
+   - **Idempotência**: As tarefas são idempotentes, ou seja, não serão executadas novamente se o estado desejado já foi alcançado.
+   - **Estado do Sistema**: Mantém o estado atual da máquina, garantindo que as configurações sejam aplicadas conforme necessário.
+   - **Versões de Aplicações**: Permite manter o ambiente rodando com versões específicas das aplicações.
+   - **Alertas de Mudanças**: Detecta e alerta sobre alterações no ambiente, permitindo reverter para uma versão anterior se necessário.
+
+2. **Provisionamento**
+   - **Configuração**: Define e aplica configurações em servidores e dispositivos.
+   - **Instalação**: Automatiza a instalação de software e dependências.
+   - **Preparação**: Prepara o ambiente para execução de aplicações.
+   - **Alteração do Estado do Sistema**: Modifica o estado do sistema conforme necessário para atender aos requisitos de configuração.
+
+3. **Automação**
+   - **Execução de Tarefas**: Automatiza a execução de tarefas repetitivas e complexas.
+   - **Ordenação de Tarefas**: Define a ordem de execução das tarefas (playbooks).
+   - **Decisões**: Toma decisões baseadas em condições definidas (handlers e conditionals).
+   - **Tarefas Ad-hoc**: Permite a execução de comandos e tarefas pontuais sem a necessidade de playbooks.
+
+4. **Orquestração**
+   - **Múltiplos Servidores**: Gerencia e coordena a configuração de múltiplos servidores simultaneamente.
+   - **Múltiplas Aplicações**: Orquestra a implantação e configuração de várias aplicações.
+   - **Diferentes Tarefas**: Coordena a execução de diferentes tarefas em sequência ou em paralelo.
+   - **Ambiente Híbrido**: Suporta a gestão de ambientes híbridos, incluindo nuvem pública, privada e infraestrutura on-premises.
 
 ### Por que Ansible?
 
