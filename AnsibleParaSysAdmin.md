@@ -1,23 +1,25 @@
 # Udemy - Ansible para SysAdmin
 
 ### **Instrutor**: Phillipe Costa
-### **Linkedin**: 
-### **Página curso na Udemy**: [Link para página do curso](https://www.udemy.com/course/ansible-para-sysadmin/?couponCode=ST11MT91624A)
-### Pasta Google Drive Treinamento: [Link para pasta do curso](https://drive.google.com/drive/folders/1ywcCxGLRNvVvXWHoaUsbqN4OpvNxFlCG?usp=drive_link)
+### **Linkedin**: Perfil do LinkedIn
+### **Página do curso na Udemy**: [Link para página do curso](https://www.udemy.com/course/ansible-para-sysadmin/?couponCode=ST11MT91624A)
+### **Pasta Google Drive Treinamento**: [Link para pasta do curso](https://drive.google.com/drive/folders/1ywcCxGLRNvVvXWHoaUsbqN4OpvNxFlCG?usp=drive_link)
 ### **Início**: 16/09/2024
 ### **Término**: 
 
 ---
-# Dia 01
+
+## Dia 01
 
 ---
-# Seção 1: Introdução ao Treinamento
 
-## Introdução ao Treinamento
+## Seção 1: Introdução ao Treinamento
 
-Grupo Telegram: [Link para página do grupo](https://t.me/+SBk6LHKdpzeMLiWp)
+### Introdução ao Treinamento
 
-## Requisitos Técnicos
+Grupo Telegram: [Link para página do grupo no Telegram](https://t.me/+SBk6LHKdpzeMLiWp)
+
+### Requisitos Técnicos
 
 - Nativamente o Ansible roda apenas em Linux
 - Recomendação treinamento Linux: [Administração de Sistemas GNU/Linux: Fundamentos e Prática](https://www.udemy.com/course/adm-so-gnulinux/?referralCode=58F8BE46FFB066C7811A&couponCode=ST11MT91624A)
@@ -25,36 +27,36 @@ Grupo Telegram: [Link para página do grupo](https://t.me/+SBk6LHKdpzeMLiWp)
 - Antes de querer automatizar alguma tarefa ou serviço, aprenda a fazer de forma manual
 - Ambientes Windows eu consigo gerencia-los
 
-# Seção 2: Introdução ao Ansible
+## Seção 2: Introdução ao Ansible
 
-## O que é Ansible
+### O que é Ansible
 
 - Em ficção científica, Ansible é uma forma de comunicação superlumínica, inicialmente proposta por _**Ursula K**_ em seu livro _**Rocannon's Workd de 1966**_
 - Ferramenta de automação (Gestão de Configuração) Open Source
 - Desenvolvida por _**Michael DeHaan**_ (Red Hat)
 - Trabalha com quatro pilares:
-    - Gerenciamento de mudanças
-        - **Idempotente**: nunca irá fazer a mesma tarefa mais que uma vez
-        - **System State**: onde armazena o estado atual da máquina
-        - **Versões de aplicações**: consigo deixar o ambiente rodando com uma versão específica da minha aplicação
-        - **Alertas de mudanças**: caso tenha ocorrido alguma alteração no ambiente o Ansible consegue validar e gerar alertas desta mudança, permitindo voltar a uma versão anterior, garantindo que o ambiente esteja da forma que foi pré determinado
-    - Provisionamento
-        - Configuração:
-        - Instalação:
-        - Preparação:
-        - Alteração do System State:
-    - Automação
-        - Execução de tarefas de forma automática
-        - Ordenação de tarefas (tasks)
-        - Realizar decisões
-        - Ad-hoc tasks
-    - Orquestração
-        - Múltiplos servidores
-        - Múltiplas aplicações
-        - Diferentes tarefas
-        - Ambiente híbrido
+  - Gerenciamento de mudanças
+    - **Idempotente**: nunca irá fazer a mesma tarefa mais que uma vez
+    - **System State**: onde armazena o estado atual da máquina
+    - **Versões de aplicações**: consigo deixar o ambiente rodando com uma versão específica da minha aplicação
+    - **Alertas de mudanças**: caso tenha ocorrido alguma alteração no ambiente o Ansible consegue validar e gerar alertas desta mudança, permitindo voltar a uma versão anterior, garantindo que o ambiente esteja da forma que foi pré determinado
+  - Provisionamento
+    - Configuração
+    - Instalação
+    - Preparação
+    - Alteração do System State:
+  - Automação
+    - Execução de tarefas de forma automática
+      - Ordenação de tarefas (tasks)
+      - Realizar decisões
+      - Ad-hoc tasks
+  - Orquestração
+    - Múltiplos servidores
+    - Múltiplas aplicações
+    - Diferentes tarefas
+    - Ambiente híbrido
 
-## Por que Ansible?
+### Por que Ansible?
 
 Além do Ansible, encontramos no mercado diversas ferramentas que se propõe a fazer o mesmo, que é a **Gestão de Configuração**, dentre as quais podemos citar:
 
@@ -78,33 +80,71 @@ Por que escolher o Ansible: ele tem várias vantagens que o tornam uma escolha p
 
 5. **Integração com Outras Ferramentas**: O Ansible se integra bem com outras ferramentas de DevOps e infraestrutura, como Docker, Kubernetes, e serviços de nuvem como AWS, Azure e Google Cloud.
 
-## Arquitetura & Funcionamento do Ansible
+### Arquitetura & Funcionamento do Ansible
 
-Documentação oficial do Ansible [Link para página da documentação](https://docs.ansible.com/)
+Documentação oficial do Ansible [Link para página da documentação oficial do Ansible](https://docs.ansible.com/)
 
-### Representação gráfica da Arquitetura do Ansible
+#### Representação gráfica da Arquitetura do Ansible
 
-![img-Imagem da Arquitetura do Ansible](./Imagens/Ansible-Arquitetura.png)
+![Arquitetura do Ansible](./Imagens/Ansible-Arquitetura.png)
 
-### Como ele funciona?
+#### Como ele funciona?
 
-### 1. **Desenvolvimento e Requisitos de Python**
-- **Desenvolvido em Python**: O Ansible é escrito em Python, o que significa que você precisa ter Python instalado no seu sistema para utilizá-lo.
+- **Desenvolvimento**
+  - **Desenvolvido em Python**: O Ansible é escrito em Python, o que significa que você precisa ter Python instalado no seu sistema para utilizá-lo.
     - **Versões Suportadas**: Python 3.5 ou superior, ou Python 2.7.
     - **Localização do Interpretador**: Por padrão, o Ansible procura o interpretador Python em **/usr/bin/python**. Se o Python estiver em outro local, você pode configurar o caminho usando a variável **ansible_interpreter**.
 
-### 2. **Métodos de Comunicação e Autenticação**
+- **Métodos de Comunicação e Autenticação**
+  - **Comunicação**
+    - **Comunicação via SSH**: O Ansible utiliza o SSH para se comunicar com seus targets (servidores Unix Like, roteadores, switches, etc.). Isso elimina a necessidade de instalar agentes nos nós gerenciados.
+    - **Comunicação via WinRM**: Para servidores Microsoft Windows, o Ansible usa o serviço WinRM (Windows Remote Management) para comunicação.
 
-### **Comunicação**
-- **Comunicação via SSH**: O Ansible utiliza o SSH para se comunicar com seus targets (servidores Unix Like, roteadores, switches, etc.). Isso elimina a necessidade de instalar agentes nos nós gerenciados.
-- **Comunicação via WinRM**: Para servidores Microsoft Windows, o Ansible usa o serviço WinRM (Windows Remote Management) para comunicação.
-
-#### **Autenticação**
-- **Usuário e Senha**: O Ansible pode autenticar usando um nome de usuário e senha. Ele também suporta autenticação via LDAP e Kerberos.
-- **Chave SSH**: Para servidores Linux, a autenticação pode ser feita usando chaves SSH, o que é considerado mais seguro e conveniente do que senhas.
-
----
-# Dia 02
+  - **Autenticação**
+    - **Usuário e Senha**: O Ansible pode autenticar usando um nome de usuário e senha. Ele também suporta autenticação via LDAP e Kerberos.
+    - **Chave SSH**: Para servidores Linux, a autenticação pode ser feita usando chaves SSH, o que é considerado mais seguro e conveniente do que senhas.
 
 ---
-# Coming soon
+
+## Dia 02
+
+---
+
+### Introdução a linguagem YAML
+
+#### YAML, o que é?
+
+- Yet another Markup Language ou YAML Ain't markup language
+- Linguagem de serialização de dados
+- Amplamente utilizada em arquivos de configuração
+- Conhecida pela simplicidade e legibilidade
+- Usa recuo no estilo Python para indicar hierarquia e alinhamento
+- _**ATENÇÃO: É necessário utilizar espaços em branco pois caracteres de tabulação não são permitidos**_
+
+YAML Ain't Markup Language version 1.2 Revision 1.2.2 (2021-10-01) [Link para página oficial da versão](https://yaml.org/spec/1.2.2/)
+
+#### Estrutura YAML
+
+- YAML inclui funcionalidades de várias linguagens como Perl, C, XML e HTML
+- Arquivos YAML têm a extensão "**.yml**" ou "**.yaml**"
+- Estruturados em formato de **mapas** ou **listas**
+  - **Mapas**:
+    - Associam pares de chave-valor
+    - Cada chave deve ser única e a ordem das chaves não importa
+  - **Listas**:
+    - Contém valores em uma ordem específica
+    - Cada item da lista começa com um traço (-) seguido de um espaço
+    - Itens da listasão separados por um recuo
+
+Documentação do YAML - Ansible [Link para página documentação YAML no Ansible](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
+
+#### Exemplo de estrutura Mapas e Lista
+
+![Estrutura de Mapas e Listas no Ansible](./Imagens/Ansible-EstruturaMapasLista.png)
+
+#### Onde o YAML é usado?
+
+- Arquivos de configuração
+- Ferramentas de automação como Ansible
+- Orquestração de conteiners com Kubernetes
+- Definição de pipelines em CI/CD (Integração Contínua/Entrega Contínua)
