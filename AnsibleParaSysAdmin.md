@@ -156,6 +156,106 @@ Documentação do YAML - Ansible [Link para página documentação YAML no Ansib
 
 ---
 
-## Dia 03 - coming soon
+## Dia 03
+
+---
+
+#### YAML Validator
+
+Para validar nossos códigos **YAML** e evitar erros de sintaxe, podemos contar com várias ferramentas úteis. Algumas opções são:
+
+- **PyCharm** e **Visual Studio Code**: Ambos os editores possuem plugins que ajudam na validação de **YAML**, destacando erros de sintaxe e estrutura em tempo real.
+- **YAML Lint**: Uma ferramenta online simples e eficaz para validar YAML. Pode ser acessado através do site [YAML Lint](https://www.yamllint.com/).
+- **YAML Checker**: Outra ferramenta online que oferece validação de sintaxe com destaque de erros e sugestões de correção. Pode ser acessado através do site [YAML Checker - The YAML Syntax Validator](https://yamlchecker.com/).
+- **Online YAML Tools**: Um conjunto de ferramentas online que inclui validação de YAML, além de outras funcionalidades como conversão entre formatos e minificação. Pode ser acessado através do site [Online YAML Tools](https://onlineyamltools.com/validate-yaml)
+
+#### Importância da Validação YAML
+
+A validação de arquivos **YAML** é crucial para garantir que não haja erros de estrutura ou sintaxe, o que pode causar falhas na execução de scripts e configurações. Ferramentas de validação ajudam a:
+
+- **Detectar Erros Precocemente**: Identificar e corrigir erros antes de aplicar configurações em produção.
+- **Melhorar a Legibilidade**: Garantir que o código **YAML** esteja bem formatado e fácil de entender.
+- **Aumentar a Confiabilidade**: Reduzir a chance de falhas devido a erros de configuração, aumentando a confiabilidade dos sistemas automatizados.
+
+### Principais Termos e Conceitos do Ansible
+
+- **Target**: Host gerenciado pelo Ansible, onde as tarefas serão executadas.
+- **Inventory File**: Também conhecido como Inventário, é o arquivo que contém a lista de targets (hosts) do Ansible. Pode ser um arquivo estático ou dinâmico, e é utilizado para definir os hosts nos quais as tarefas serão executadas.
+- **Ad-hoc**: Linha de comando do Ansible, através do binário "**/usr/bin/ansible**" usada para automatizar tarefas únicas através de um ou mais módulos. Ideal para execuções rápidas e pontuais.
+- **Módulos**: Conjuntos de códigos que executam ações específicas nos targets. Podem ser usados tanto em comandos ad-hoc ou em playbooks. Exemplos incluem módulos para copiar arquivos, instalar pacotes, gerenciar serviços, etc.
+- **Tasks**: Definições de ações a serem aplicadas em hosts gerenciados. Cada tarefa utiliza um módulo Ansible para realizar uma ação específica, como instalar um pacote ou reiniciar um serviço.
+- **Roles**: Conjuntos reutilizáveis de automação Ansible. Uma role pode incluir tasks, handlers, variáveis, templates, arquivos e outros componentes necessários para configurar um serviço ou aplicação.
+- **Playbooks**: Conjunto de instruções escritas em YAML que definem as tasks a serem executadas em hosts gerenciados. Playbooks podem incluir tasks, roles, variáveis, handlers e outras instruções.
+- **Collections**: Formato de distribuição para conteúdo do Ansible, incluindo módulos, plugins, playbooks, roles e documentação. Falicita a organização e compartilhamento de conteúdo Ansible.
+- **YAML**: Linguagem de serialização de dados utilizada para escrever arquivos de configuração do Ansible, como playbooks, tasks e inventory files.
+
+#### Pontos Adicionais
+
+- **Handlers**: Tarefas especiais que são executadas em resposta a notificações de outras tasks. São usadas para ações que devem ocorrer apenas quando há mudanças, como reiniciar um serviço após uma atualização.
+- **Templates**: Arquivos que contêm variáveis e são processados pelo Ansible para gerar arquivos de configuração dinâmicos. Utilizam a linguagem de template Jinja2.
+- **Vars**: Variáveis que podem ser definidas em vários níveis (playbooks, roles, inventory, etc.) e são usadas para parametrizar as tasks e playbooks.
+
+- **Plugins**: Extensões que adicionam funcionalidades ao Ansible, como plugins de conexão, plugins de callback, plugins de lookup, entre outros.
+
+## Seção 3: Laboratório Técnico e Primeiros Passos
+
+### Apresentação do Laboratório
+
+#### Onde criar meu ambiente de laboratório?
+
+![Alternativas para ambiente de laboratório](./Imagens/Ansible-OndeCriarMeuAmbiente.png)
+
+#### Qual sistema operacional escolher?
+
+![Qual sistema operacional escolher](./Imagens/Ansible-QualSistemaOperacionalEscolher.png)
+
+#### Ambiente utilizado pelo Instrutor
+
+![Ambiente utilizado pelo Instrutor](./Imagens/Ansible-AmbienteUtilizadoPeloInstrutor.png)
+
+#### Realizando Testes no Laboratório
+
+#### Considerações importantes
+
+- **Rede**: Configure a rede em modo Bridge para que as VMs possam se comunicar diretamente com a rede local.
+- **Memória**:
+  - Servidores Linux: 1024 MB
+  - Servidor Windows: 2048 MB
+- **Templates**: Criar Templates (Snapshots) das máquinas virtuais para facilitar a recriação do ambiente, se necessário.
+
+#### Testes de Conectividade
+
+- **Ping**: Verifique se as VMs estão respondendo na rede. Execute o comando abaixo para cada VM:
+
+```ping
+ping 192.168.0.100
+```
+
+- **Telnet**: Verifique se a porta para SSH está habilitada nas VMs Linux. Se o SSH estiver em funcionamento e a porta padrão (22) não tiver sido alterada, execute o comando abaixo para cada VM:
+
+```telnet
+telnet 192.168.0.100 22
+```
+
+- **SSH**: Teste a comunicação SSH com as VMs Linux:
+
+```ssh
+ssh nomeusuario@192.168.0.100
+```
+
+- **Telnet (WinRM)**: Para a VM Windows, verifique se o protocolo WinRM está habilitado. Teste a comunicação na porta padrão (5985):
+
+```telnet
+telnet 192.168.0.100 5985
+```
+
+#### Adicionalmente
+
+- **Firewall**: Certifique-se de que os firewalls das VMs estão configurados para permitir o tráfego nas portas necessárias (22 para SSH e 5985 para WinRM).
+- **Hosts File**: Adicione entradas no arquivo `/etc/hosts` (ou `C:\Windows\System32\drivers\etc\hosts` no Windows) para facilitar a resolução de nomes das VMs.
+
+---
+
+## Dia 04 - coming soon
 
 ---
