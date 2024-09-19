@@ -256,6 +256,44 @@ telnet 192.168.0.100 5985
 
 ---
 
-## Dia 04 - coming soon
+## Dia 04
 
 ---
+
+#### Autenticação por Chaves SSH
+
+Para que nosso treinamento esteja em conformidade com as melhores práticas, iremos utilizar de Chaves SSH para realizar a autenticação entre nossas máquinas, para isso precisamos criá-la e distribuir entre as máquinas, a seguir será demonstrado como fazer isso.
+´
+**Criação da Chave SSH**
+
+```
+ssh-keygen -b 2048 -t rsa -f ansible-key
+```
+
+Isso irá criar uma chave privada de nome **ansible-key** e uma chave pública de nome **ansible-key.pub** e estarão localizadas na pasta **/home/nomeusuario/.ssh/**. Agora precisamos copiar a chave pública gerada, para as máquinas que iremos gerenciar, a seguir será demonstrado como fazer isso.
+
+**Cópia da Chave SSH**
+
+```ssh
+ssh-copy-id -i ansible-key.pub nomeusuario@192.168.0.100
+```
+
+Após realizarmos a cópia da nossa chave pública para os hosts de destino, já podemos nos conectar aos mesmos, a seguir será demonstrado como fazer isso.
+
+**Conectando aos hosts de destino**
+
+```ssh
+ssh -i ansible-key nomeusuario@192.168.0.100
+```
+
+Obs.: Para evitarmos ter que digitar o parâmetro "-i nome da chave" toda vez que precisarmos nos conectar, podemos adicionar esta chave a um arquivo chamado "config" localizado na pasta **/home/nomeusuario/.ssh**, devendo ficar parecido como mostrado a seguir:
+
+```text
+IdentifyFile "~/.ssh/ansible-key"
+```
+
+Desta forma consigo fazer a conexão SSH sem necessidade de passar o parâmetro "-i nome da chave", podendo fazer a conexão da seguinte forma:
+
+```ssh
+ssh nomeusuario@192.168.0.100
+```
