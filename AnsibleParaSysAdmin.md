@@ -329,3 +329,115 @@ ssh nomeusuario@192.168.0.100
     ```
 
 ### Instalação do Ansible
+
+O Ansible deverá estar instalado apenas na máquina que será utilizada para rodar nossos `Playbooks`, ou seja, na máquina que será o nó master do Ansible.
+
+Temos três formas de fazer a instalação:
+
+- Instalação via PIP (gerenciador de dependências de pacotes do Python)
+- Instalação via apt (gerenciador de pacotes para distribuições Debian)
+- Instalação via yum (gerenciador de pacotes para distribuições Red Hat)
+
+Na documentação oficial do Ansible podemos encontrar estas e outras formas de instalação. Esta documentação pode ser acessado através do site [Ansible Community Documentation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
+
+#### Instalação via PIP
+
+Neste exemplo faremos a instalação em uma distribuição Red Hat, optando pelo Python 3: 
+
+```bash
+sudo yum install python3-pip
+```
+
+Ao finalizar a instalação podemos conferir executando o seguinte comando:
+
+```bash
+pip
+```
+
+O retorno deste comando deve ser alguma coisa parecida com a imagem abaixo:
+
+![Retorno do comando pip](./Imagens/Ansible-RetornoComandoPip.png)
+
+Na sequência faremos a instalação do `pip3` executando o seguinte comando:
+
+```bash
+sudo pip3 install pip --upgrade
+```
+
+Isso fará com que o `pip` seja instalado com sua última versão e após a conclusão da instalação podemos conferir executando o seguinte comando:
+
+```bash
+pip3 --version
+```
+
+Agora podemos partir para a instalação do Ansible propriamente dito, para isso devemos executar o seguinte comando:
+
+```bash
+sudo pip3 install ansible
+```
+
+Após a conclusão da instalação podemos conferir executando o seguinte comando:
+
+```bash
+ansible --version
+```
+
+O retorno deste comando deve ser alguma coisa parecida com a imagem abaixo:
+
+![Retorno do comando ansible --version](./Imagens/AnsibleRetornoComandoAnsibleVersionViaPip.png)
+
+**Obs.**: Quando o Ansible é instalado via `pip`, por padrão ele não cria o arquivo `/etc/ansible/ansible.cfg`, devendo ser criado manualmente.
+
+Instalação realizada, podemos fazer a atualização do Ansible, executando o seguinte comando:
+
+```bash
+pip install ansible --upgrade
+```
+
+Isso fará com que o Ansible seja autalizado e podemos fazer a remoção do Ansible executando o seguinte comando:
+
+```bash
+pip3 uninstall ansible
+```
+
+#### Instalação via Gerenciador de Dependências (apt e yum)
+
+**Instalação via apt**: executando o seguinte comando:
+
+```bash
+sudo apt install ansible
+```
+
+Após a conclusão da instalação podemos conferir executando o seguinte comando:
+
+```bash
+ansible --version
+```
+
+O retorno deste comando deve ser alguma coisa parecida com a imagem abaixo:
+
+![Retorno do comando ansible --version](./Imagens/AnsibleRetornoComandoAnsibleVersionViaApt.png)
+
+**Instalação via yum**: executando os seguintes comandos:
+
+```bash
+sudo yum install epel-release
+sudo yum update
+sudo yum install ansible
+```
+
+Após a conclusão da instalação podemos conferir executando o seguinte comando:
+
+```bash
+ansible --version
+```
+
+O retorno deste comando deve ser alguma coisa parecida com a imagem abaixo:
+
+![Retorno do comando ansible --version](./Imagens/AnsibleRetornoComandoAnsibleVersionViaYum.png)
+
+---
+
+## Dia 05 - coming soon
+
+---
