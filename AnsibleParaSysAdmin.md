@@ -186,7 +186,7 @@ A validação de arquivos **YAML** é crucial para garantir que não haja erros 
 - **Tasks**: Definições de ações a serem aplicadas em hosts gerenciados. Cada tarefa utiliza um módulo Ansible para realizar uma ação específica, como instalar um pacote ou reiniciar um serviço.
 - **Roles**: Conjuntos reutilizáveis de automação Ansible. Uma role pode incluir tasks, handlers, variáveis, templates, arquivos e outros componentes necessários para configurar um serviço ou aplicação.
 - **Playbooks**: Conjunto de instruções escritas em YAML que definem as tasks a serem executadas em hosts gerenciados. Playbooks podem incluir tasks, roles, variáveis, handlers e outras instruções.
-- **Collections**: Formato de distribuição para conteúdo do Ansible, incluindo módulos, plugins, playbooks, roles e documentação. Falicita a organização e compartilhamento de conteúdo Ansible.
+- **Collections**: Formato de distribuição para conteúdo do Ansible, incluindo módulos, plugins, playbooks, roles e documentação. Facilita a organização e compartilhamento de conteúdo Ansible.
 - **YAML**: Linguagem de serialização de dados utilizada para escrever arquivos de configuração do Ansible, como playbooks, tasks e inventory files.
 
 #### Pontos Adicionais
