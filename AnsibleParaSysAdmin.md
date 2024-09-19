@@ -22,8 +22,8 @@ Grupo Telegram: [Link para página do grupo no Telegram](https://t.me/+SBk6LHKdp
 ### Requisitos Técnicos
 
 - Nativamente o Ansible roda apenas em Linux
-- Recomendação treinamento Linux: [Administração de Sistemas GNU/Linux: Fundamentos e Prática](https://www.udemy.com/course/adm-so-gnulinux/?referralCode=58F8BE46FFB066C7811A&couponCode=ST11MT91624A)
-- Recomendação treinamento VirtualBox: [VirtualBox: Craindo laboratórios com máquinas virtuais](https://www.udemy.com/course/vboxlabs/?referralCode=69393EE188E9A32B5C9B)
+- Recomendação treinamento Linux: [Administração de Sistemas GNU/Linux: Fundamentos e Prática (Udemy)](https://www.udemy.com/course/adm-so-gnulinux/?referralCode=58F8BE46FFB066C7811A&couponCode=ST11MT91624A)
+- Recomendação treinamento VirtualBox: [VirtualBox: Craindo laboratórios com máquinas virtuais (Udemy)](https://www.udemy.com/course/vboxlabs/?referralCode=69393EE188E9A32B5C9B)
 - Antes de querer automatizar alguma tarefa ou serviço, aprenda a fazer de forma manual
 - Ambientes Windows eu consigo gerencia-los
 
