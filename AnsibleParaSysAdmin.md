@@ -260,40 +260,72 @@ telnet 192.168.0.100 5985
 
 ---
 
-#### Autenticação por Chaves SSH
+### Autenticação por Chaves SSH
 
-Para que nosso treinamento esteja em conformidade com as melhores práticas, iremos utilizar de Chaves SSH para realizar a autenticação entre nossas máquinas, para isso precisamos criá-la e distribuir entre as máquinas, a seguir será demonstrado como fazer isso.
-´
-**Criação da Chave SSH**
+Para que nosso treinamento esteja em conformidade com as melhores práticas, utilizaremos chaves SSH para realizar a autenticação entre nossas máquinas. A seguir, demonstraremos como criar e distribuir essas chaves.
 
-```
-ssh-keygen -b 2048 -t rsa -f ansible-key
-```
+#### Criação da Chave SSH
 
-Isso irá criar uma chave privada de nome **ansible-key** e uma chave pública de nome **ansible-key.pub** e estarão localizadas na pasta **/home/nomeusuario/.ssh/**. Agora precisamos copiar a chave pública gerada, para as máquinas que iremos gerenciar, a seguir será demonstrado como fazer isso.
+Execute o comando abaixo para gerar um par de chaves SSH:
 
-**Cópia da Chave SSH**
-
-```ssh
-ssh-copy-id -i ansible-key.pub nomeusuario@192.168.0.100
+```bash
+ssh-keygen -b 2048 -t rsa -f ~/.ssh/ansible-key
 ```
 
-Após realizarmos a cópia da nossa chave pública para os hosts de destino, já podemos nos conectar aos mesmos, a seguir será demonstrado como fazer isso.
+Isso criará uma chave privada chamada **ansible-key** e uma chave pública chamada **ansible-key.pub**, localizadas na pasta **/home/nomeusuario/.ssh/**.
 
-**Conectando aos hosts de destino**
+#### Cópia da Chave SSH
 
-```ssh
-ssh -i ansible-key nomeusuario@192.168.0.100
+Para copiar a chave pública para as máquinas que iremos gerenciar, utilize o comando:
+
+```bash
+ssh-copy-id -i ~/.ssh/ansible-key.pub nomeusuario@192.168.0.100
 ```
 
-Obs.: Para evitarmos ter que digitar o parâmetro "-i nome da chave" toda vez que precisarmos nos conectar, podemos adicionar esta chave a um arquivo chamado "config" localizado na pasta **/home/nomeusuario/.ssh**, devendo ficar parecido como mostrado a seguir:
+Repita este comando para cada host de destino.
+
+#### Conectando aos Hosts de Destino
+
+Após copiar a chave pública para os hosts de destino, você pode se conectar a eles usando o comando:
+
+```bash
+ssh -i ~/.ssh/ansible-key nomeusuario@192.168.0.100
+```
+
+#### Simplificando a Conexão SSH
+
+Para evitar a necessidade de digitar o parâmetro `-i nome da chave` toda vez que se conectar, você pode adicionar a chave a um arquivo de configuração SSH. Crie ou edite o arquivo **config** na pasta **/home/nomeusuario/.ssh** e adicione a seguinte configuração:
 
 ```text
-IdentifyFile "~/.ssh/ansible-key"
+Host 192.168.0.*
+    IdentityFile ~/.ssh/ansible-key
 ```
 
-Desta forma consigo fazer a conexão SSH sem necessidade de passar o parâmetro "-i nome da chave", podendo fazer a conexão da seguinte forma:
+Com isso, você poderá se conectar aos hosts sem especificar a chave:
 
-```ssh
+```bash
 ssh nomeusuario@192.168.0.100
 ```
+
+### Considerações Adicionais
+
+- **Permissões de Arquivo**: Certifique-se de que as permissões dos arquivos de chave estão corretas. A chave privada deve ter permissões **600**:
+
+    ```bash
+    chmod 600 ~/.ssh/ansible-key
+    ```
+
+- **Configuração do SSH no Servidor**: Verifique se o servidor SSH está configurado para aceitar autenticação por chave pública. No arquivo **/etc/ssh/sshd_config**, as seguintes linhas devem estar presentes e descomentadas:
+
+    ```text
+    PubkeyAuthentication yes
+    AuthorizedKeysFile .ssh/authorized_keys
+    ```
+
+- **Reiniciar o Serviço SSH**: Após qualquer alteração no arquivo de configuração do SSH, reinicie o serviço:
+
+    ```bash
+    sudo systemctl restart sshd
+    ```
+
+### Instalação do Ansible
