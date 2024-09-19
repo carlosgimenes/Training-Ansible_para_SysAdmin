@@ -446,3 +446,7 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
 ## Dia 05 - coming soon
 
 ---
+
+## Seção 4: Conhecendo o ansible.cfg
+
+### Introdução ao ansible.cfg
