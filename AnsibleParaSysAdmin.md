@@ -445,8 +445,35 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
 
 ## Dia 05 - coming soon
 
+![coming soon](./Imagens/Ansible-ComingSoon.png)
+
 ---
 
 ## Seção 4: Conhecendo o ansible.cfg
 
 ### Introdução ao ansible.cfg
+
+Principais itens do arquivo ansible.cfg
+
+- Principal arquivo de configuração do ansible (ini file).
+- Podemos criar o arquivo de forma manual ou através do utilitário `ansible-config`, que pode ser utilizado para criar, modificar e/ou consultar.
+- Por padrão está localizado em `/etc/ansible/ansible.cfg`.
+- Se nenhum arquivo de configuração for localizado, as opções padrão serão aplicadas.
+
+**Atenção**: Dependendo da forma de instalação do ansible e/ou distribuição Linux utilizada, o arquivo `/etc/ansible/ansible.cfg` pode ou não ser criado (processo normal).
+
+Ordem de prioridade e interpretação seguida para o `ansible.cfg`
+
+- Quando executarmos uma linha ad-hoc ou um playbook, por padrão temos quatro localizações padrão para o arquivo, sendo elas:
+  1. **$ANSIBLE_CONFIG** - Procura pelo `ansible.cfg` nesta variável, se encontrar, irá procurar por seu valor que deve estar referenciando o `path` completo do arquivo
+  2. **./ansible.cfg** - Procura pelo `ansible.cfg` no diretório corrente, se encontrar, ele será interpretado
+  3. **~/ansible.cfg** - Procura pelo `ansible.cfg` no diretório home do usuário, se encontrar, ele será interpretado
+  4. **/etc/ansible/ansible.cfg** - Por último e o mais utilizado, procura pelo `ansible.cfg` neste diretório, se encontrar, ele será interpretado
+
+#### Ordem de Prioridade e Interpretação do arquivo `ansible.cfg`
+
+![Ordem de Prioridade e Interpretação do ansible.cfg](./Imagens/Ansible-OrdemPrioridadeInterpretacaoArquivoAnsibleCfg.png)
+
+Pensando no contexto de automações, tenha cuidado onde deixar seu arquivo `ansible.cfg`, pois uma má configuração no mesmo, poderá expor seu ambiente, caso precise deixá-lo no diretório corrente (seja qual for), certifique-se que o mesmo só possui permissões (principalmente escrita), para usuários e grupos autorizados.
+
+### Conhecendo o ansible-config
