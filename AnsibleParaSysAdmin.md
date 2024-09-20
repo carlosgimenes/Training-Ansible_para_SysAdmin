@@ -443,9 +443,7 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
 
 ---
 
-## Dia 05 - coming soon
-
-![coming soon](./Imagens/Ansible-ComingSoon.png)
+## Dia 05
 
 ---
 
@@ -453,27 +451,68 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
 
 ### Introdução ao ansible.cfg
 
-Principais itens do arquivo ansible.cfg
+#### Principais Itens do Arquivo ansible.cfg
 
-- Principal arquivo de configuração do ansible (ini file).
-- Podemos criar o arquivo de forma manual ou através do utilitário `ansible-config`, que pode ser utilizado para criar, modificar e/ou consultar.
-- Por padrão está localizado em `/etc/ansible/ansible.cfg`.
-- Se nenhum arquivo de configuração for localizado, as opções padrão serão aplicadas.
+- **Principal Arquivo de Configuração**: O `ansible.cfg` é o principal arquivo de configuração do Ansible, formatado como um arquivo INI.
+- **Criação e Modificação**: Pode ser criado manualmente ou através do utilitário `ansible-config`, que permite criar, modificar e consultar configurações.
+- **Localização Padrão**: Por padrão, está localizado em `/etc/ansible/ansible.cfg`.
+- **Configurações Padrão**: Se nenhum arquivo de configuração for localizado, as opções padrão do Ansible serão aplicadas.
 
-**Atenção**: Dependendo da forma de instalação do ansible e/ou distribuição Linux utilizada, o arquivo `/etc/ansible/ansible.cfg` pode ou não ser criado (processo normal).
+**Atenção**: Dependendo da forma de instalação do Ansible e/ou da distribuição Linux utilizada, o arquivo `/etc/ansible/ansible.cfg` pode ou não ser criado automaticamente.
 
-Ordem de prioridade e interpretação seguida para o `ansible.cfg`
+#### Ordem de Prioridade e Interpretação do Arquivo ansible.cfg
 
-- Quando executarmos uma linha ad-hoc ou um playbook, por padrão temos quatro localizações padrão para o arquivo, sendo elas:
-  1. **$ANSIBLE_CONFIG** - Procura pelo `ansible.cfg` nesta variável, se encontrar, irá procurar por seu valor que deve estar referenciando o `path` completo do arquivo
-  2. **./ansible.cfg** - Procura pelo `ansible.cfg` no diretório corrente, se encontrar, ele será interpretado
-  3. **~/ansible.cfg** - Procura pelo `ansible.cfg` no diretório home do usuário, se encontrar, ele será interpretado
-  4. **/etc/ansible/ansible.cfg** - Por último e o mais utilizado, procura pelo `ansible.cfg` neste diretório, se encontrar, ele será interpretado
+Quando executamos uma linha ad-hoc ou um playbook, o Ansible segue uma ordem de prioridade para localizar o arquivo `ansible.cfg`:
 
-#### Ordem de Prioridade e Interpretação do arquivo `ansible.cfg`
+1. **$ANSIBLE_CONFIG**: Procura pelo `ansible.cfg` na variável de ambiente `$ANSIBLE_CONFIG`. Se encontrado, utiliza o caminho especificado.
+2. **./ansible.cfg**: Procura pelo `ansible.cfg` no diretório corrente. Se encontrado, ele será utilizado.
+3. **~/ansible.cfg**: Procura pelo `ansible.cfg` no diretório home do usuário. Se encontrado, ele será utilizado.
+4. **/etc/ansible/ansible.cfg**: Por último, procura pelo `ansible.cfg` no diretório `/etc/ansible/`. Se encontrado, ele será utilizado.
 
 ![Ordem de Prioridade e Interpretação do ansible.cfg](./Imagens/Ansible-OrdemPrioridadeInterpretacaoArquivoAnsibleCfg.png)
 
-Pensando no contexto de automações, tenha cuidado onde deixar seu arquivo `ansible.cfg`, pois uma má configuração no mesmo, poderá expor seu ambiente, caso precise deixá-lo no diretório corrente (seja qual for), certifique-se que o mesmo só possui permissões (principalmente escrita), para usuários e grupos autorizados.
+#### Considerações de Segurança
+
+- **Permissões de Arquivo**: Certifique-se de que o arquivo `ansible.cfg` possui permissões adequadas para evitar acesso não autorizado. Recomenda-se que apenas usuários e grupos autorizados tenham permissões de escrita.
+- **Localização do Arquivo**: Tenha cuidado ao deixar o arquivo `ansible.cfg` no diretório corrente ou em locais acessíveis por múltiplos usuários. Uma má configuração pode expor seu ambiente a riscos de segurança.
+
+#### Exemplos de Configurações Comuns
+
+Alguns exemplos de configurações comuns que podem ser definidas no arquivo `ansible.cfg`:
+
+```ini
+[defaults]
+inventory = ./hosts
+remote_user = ansible
+private_key_file = ~/.ssh/ansible_key
+host_key_checking = False
+retry_files_enabled = False
+
+[privilege_escalation]
+become = True
+become_method = sudo
+become_user = root
+become_ask_pass = False
+```
+
+- **inventory**: Define o caminho para o arquivo de inventário.
+- **remote_user**: Define o usuário remoto padrão para conexões SSH.
+- **private_key_file**: Especifica o arquivo de chave privada para autenticação SSH.
+- **host_key_checking**: Desabilita a verificação de chave de host SSH (não recomendado para produção).
+- **retry_files_enabled**: Desabilita a criação de arquivos de retry.
+- **become**: Habilita a escalada de privilégios.
+- **become_method**: Define o método de escalada de privilégios (ex.: sudo).
+- **become_user**: Define o usuário para escalada de privilégios.
+- **become_ask_pass**: Desabilita a solicitação de senha para escalada de privilégios.
+
+Essas configurações ajudam a personalizar o comportamento do Ansible de acordo com as necessidades do ambiente.
+
+---
+
+## Dia 06 - coming soon
+
+![coming soon](./Imagens/Ansible-ComingSoon.png)
+
+---
 
 ### Conhecendo o ansible-config
