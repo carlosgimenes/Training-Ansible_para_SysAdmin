@@ -451,6 +451,8 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
 
 ### Introdução ao ansible.cfg
 
+Página para documentação do arquivo ansible.cfg [Link para página da documentação arquivo ansible.cfg](https://docs.ansible.com/ansible/latest/installation_guide/intro_configuration.html)
+
 #### Principais Itens do Arquivo ansible.cfg
 
 - **Principal Arquivo de Configuração**: O `ansible.cfg` é o principal arquivo de configuração do Ansible, formatado como um arquivo INI.
@@ -509,13 +511,13 @@ Essas configurações ajudam a personalizar o comportamento do Ansible de acordo
 
 ---
 
-## Dia 06 - coming soon
-
-![coming soon](./Imagens/Ansible-ComingSoon.png)
+## Dia 06
 
 ---
 
 ### Conhecendo o ansible-config
+
+Página para documentação do arquivo ansible-config [Link para página da documentação arquivo ansible-config](https://docs.ansible.com/ansible/latest/cli/ansible-config.html#ansible-config)
 
 #### Utilitário ansible-config
 
@@ -570,7 +572,7 @@ Essas configurações ajudam a personalizar o comportamento do Ansible de acordo
 - **init**: Cria um arquivo de configuração inicial.
   - Exemplo: `$ ansible-config init`
   - **Exemplo de Retorno**:
-  
+
     ```text
     Configuration file written to /path/to/your/directory/ansible.cfg
     ```
@@ -589,3 +591,13 @@ Essas configurações ajudam a personalizar o comportamento do Ansible de acordo
 - **netconf**: Plugins para gerenciar dispositivos de rede via NETCONF.
 - **shell**: Configurações para execução de comandos shell.
 - **vars**: Configurações de variáveis.
+
+---
+
+## Dia 07 - coming soon
+
+![coming soon](./Imagens/Ansible-ComingSoon.png)
+
+---
+
+### Ordem de prioridade
