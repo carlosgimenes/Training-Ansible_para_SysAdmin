@@ -519,29 +519,73 @@ Essas configurações ajudam a personalizar o comportamento do Ansible de acordo
 
 #### Utilitário ansible-config
 
-- Comando utilizado para realizar a criação e/ou alteração do arquivo `ansible.cfg`
-- Permite visualização de todas as configurações padrão aplicadas ao Ansible
-- Sintaxe:
-  - ansible-config [opções] [argumentos]
+- **Função**: Comando utilizado para criar e/ou alterar o arquivo `ansible.cfg`.
+- **Visualização de Configurações**: Permite visualizar todas as configurações padrão aplicadas ao Ansible.
+- **Sintaxe**:
+  - `ansible-config [opções] [argumentos]`
 
-#### Principais opções
+#### Principais Opções
 
-- **list**: Exibe todas as configurações disponíveis. Ex.: `$ ansible-config list`
-- **dump**: Exibe todas as configurações disponíveis, e cruza com as aplicadas no arquivo `ansible.cfg`. Ex.: `$ ansible-config dump`
-- **view**: Exibe as configurações dentro do arquivo `ansible.cfg`. Ex.: `$ ansible-config view`
-- **init**: Cria um arquivo de configuração inicial. Ex.: `$ ansible-config init`
+- **list**: Exibe todas as configurações disponíveis.
+  - Exemplo: `$ ansible-config list`
+  - **Exemplo de Retorno**:
 
-#### Plugins disponíveis no ansible.cfg
+    ```text
+    ACTION_WARNINGS(default) = True
+    AGGREGATE_PLUGINS(default) = True
+    ALLOW_WORLD_READABLE_TMPFILES(default) = False
+    ...
+    ```
 
-- base
-- become
-- cache
-- callback
-- cliconf
-- connection
-- httpapi
-- inventory
-- lookup
-- netconf
-- shell
-- vars
+- **dump**: Exibe todas as configurações disponíveis e cruza com as aplicadas no arquivo `ansible.cfg`.
+  - Exemplo: `$ ansible-config dump`
+  - **Exemplo de Retorno**:
+
+    ```text
+    DEFAULT_ACTION_WARNINGS(default) = True
+    DEFAULT_AGGREGATE_PLUGINS(default) = True
+    DEFAULT_ALLOW_WORLD_READABLE_TMPFILES(default) = False
+    ...
+    ```
+
+- **view**: Exibe as configurações dentro do arquivo `ansible.cfg`.
+  - Exemplo: `$ ansible-config view`
+  - **Exemplo de Retorno**:
+
+    ```ini
+    [defaults]
+    inventory = ./hosts
+    remote_user = ansible
+    private_key_file = ~/.ssh/ansible_key
+    host_key_checking = False
+    retry_files_enabled = False
+
+    [privilege_escalation]
+    become = True
+    become_method = sudo
+    become_user = root
+    become_ask_pass = False
+    ```
+
+- **init**: Cria um arquivo de configuração inicial.
+  - Exemplo: `$ ansible-config init`
+  - **Exemplo de Retorno**:
+  
+    ```text
+    Configuration file written to /path/to/your/directory/ansible.cfg
+    ```
+
+#### Plugins Disponíveis no ansible.cfg
+
+- **base**: Configurações básicas do Ansible.
+- **become**: Configurações relacionadas à escalada de privilégios.
+- **cache**: Configurações de cache para melhorar o desempenho.
+- **callback**: Plugins de callback para personalizar a saída do Ansible.
+- **cliconf**: Plugins de configuração de CLI para dispositivos de rede.
+- **connection**: Configurações de conexão, como SSH e WinRM.
+- **httpapi**: Plugins para interagir com APIs HTTP.
+- **inventory**: Configurações relacionadas ao inventário de hosts.
+- **lookup**: Plugins de lookup para buscar dados de várias fontes.
+- **netconf**: Plugins para gerenciar dispositivos de rede via NETCONF.
+- **shell**: Configurações para execução de comandos shell.
+- **vars**: Configurações de variáveis.
