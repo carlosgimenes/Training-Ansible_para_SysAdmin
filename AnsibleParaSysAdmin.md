@@ -376,7 +376,7 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
     ansible --version
     ```
 
-    ![Retorno do comando ansible --version](./Imagens/AnsibleRetornoComandoAnsibleVersionViaPip.png)
+    ![Retorno do comando ansible --version](./Imagens/Ansible-RetornoComandoAnsibleVersionViaPip.png)
 
     **Obs.**: Quando o Ansible é instalado via `pip`, por padrão ele não cria o arquivo `/etc/ansible/ansible.cfg`, devendo ser criado manualmente.
 
@@ -407,7 +407,7 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
     ansible --version
     ```
 
-    ![Retorno do comando ansible --version](./Imagens/AnsibleRetornoComandoAnsibleVersionViaApt.png)
+    ![Retorno do comando ansible --version](./Imagens/Ansible-RetornoComandoAnsibleVersionViaApt.png)
 
     **Desinstalação via apt**:
 
@@ -431,7 +431,7 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
     ansible --version
     ```
 
-    ![Retorno do comando ansible --version](./Imagens/AnsibleRetornoComandoAnsibleVersionViaYum.png)
+    ![Retorno do comando ansible --version](./Imagens/Ansible-RetornoComandoAnsibleVersionViaYum.png)
 
     **Desinstalação via yum**:
 
@@ -516,3 +516,32 @@ Essas configurações ajudam a personalizar o comportamento do Ansible de acordo
 ---
 
 ### Conhecendo o ansible-config
+
+#### Utilitário ansible-config
+
+- Comando utilizado para realizar a criação e/ou alteração do arquivo `ansible.cfg`
+- Permite visualização de todas as configurações padrão aplicadas ao Ansible
+- Sintaxe:
+  - ansible-config [opções] [argumentos]
+
+#### Principais opções
+
+- **list**: Exibe todas as configurações disponíveis. Ex.: `$ ansible-config list`
+- **dump**: Exibe todas as configurações disponíveis, e cruza com as aplicadas no arquivo `ansible.cfg`. Ex.: `$ ansible-config dump`
+- **view**: Exibe as configurações dentro do arquivo `ansible.cfg`. Ex.: `$ ansible-config view`
+- **init**: Cria um arquivo de configuração inicial. Ex.: `$ ansible-config init`
+
+#### Plugins disponíveis no ansible.cfg
+
+- base
+- become
+- cache
+- callback
+- cliconf
+- connection
+- httpapi
+- inventory
+- lookup
+- netconf
+- shell
+- vars
