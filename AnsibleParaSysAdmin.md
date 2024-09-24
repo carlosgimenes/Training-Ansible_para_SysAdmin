@@ -594,10 +594,136 @@ Página para documentação do arquivo ansible-config [Link para página da docu
 
 ---
 
-## Dia 07 - coming soon
+## Dia 07 - Montagem do Laboratório
+
+---
+
+### Download Ubuntu Server 24.04.1 LTS
+
+Página oficial Ubuntu para Download ISO [Link para página Ubuntu Server 24.04.1 LTS](https://ubuntu.com/download/server/thank-you?version=24.04.1&architecture=amd64&lts=true)
+
+### Layout da Rede do Laboratório
+
+1. **Control Node (Desktop com Linux Ubuntu):**
+   - **Nome da Máquina:** `VSC-NBK08`
+   - **Memória RAM e CPU:** Conforme o hardware do seu desktop
+   - **Disco:** Conforme o hardware do seu desktop
+   - **Rede:**
+     - Modo de rede: Bridge
+     - IP: **192.168.0.131** (fixo)
+     - Gateway: **192.168.0.1**
+     - DNS: **192.168.0.1 8.8.8.8**
+   - **Função no laboratório:** Control Node para o Ansible, responsável por orquestrar os servidores Linux e Windows.
+
+2. **Servidor Linux Ubuntu (1 VM):**
+   - **Nome da VM:** `LAB-ANS-SRV01`
+   - **Memória RAM:** 1GB
+   - **CPU:** 1 núcleo (ajustável)
+   - **Disco:** 10GB (ou mais conforme necessário)
+   - **Rede:**
+     - Modo de rede: **Bridge**
+     - IP: **192.168.0.136**
+     - Gateway: **192.168.0.1**
+     - DNS: **192.168.0.1 8.8.8.8**
+   - **Função no laboratório:** Node para o Ansible (servidor alvo)
+
+3. **Servidores Linux Ubuntu (1 VM):**
+   - **Nome das VMs:** `LAB-ANS-SRV02`
+   - **Memória RAM:** 1GB
+   - **CPU:** 1 núcleo (ajustável)
+   - **Disco:** 10GB (ou mais conforme necessário)
+   - **Rede:**
+     - Modo de rede: **Bridge**
+     - IP: **192.168.0.137**
+     - Gateway: **192.168.0.1**
+     - DNS: **192.168.0.1 8.8.8.8**
+   - **Função no laboratório:** Node para o Ansible (servidor alvo)
+
+4. **Servidor Windows Server 2019 (1 VM):**
+   - **Nome da VM:** `LAB-ANS-SRV03`
+   - **Memória RAM:** 2GB
+   - **CPU:** 2 núcleos (ajustável)
+   - **Disco:** 30GB (ou mais conforme necessário)
+   - **Rede:**
+     - Modo de rede: Bridge
+     - IP: **192.168.0.138**
+     - Gateway: **192.168.0.1**
+     - DNS: **192.168.0.1 8.8.8.8**
+   - **Função no laboratório:** Node adicional para o Ansible, suportando automação de Windows.
+
+### Topologia da Rede
+
+- **Control Node (`VSC-NBK08`)** orquestra as VMs Linux (`LAB-ANS-SRV01`, `LAB-ANS-SRV02`) e a VM Windows (`LAB-ANS-SRV04`).
+- Todos os servidores estão na rede **192.168.0.x** e têm IPs fixos, começando a partir de **192.168.0.100**.
+- O gateway é **192.168.0.1** e todos os dispositivos estão conectados via **modo Bridge** no VirtualBox, o que garante que façam parte da mesma rede local.
+
+### Considerações de Configuração
+
+- **Ansible Control Node (`VSC-NBK08`)** deve ter o SSH habilitado e configurado para comunicação com os servidores Linux (`LAB-ANS-SRV01`, `LAB-ANS-SRV02`).
+- **WinRM** deve ser configurado no Windows Server (`LAB-ANS-SRV03`) para que o Ansible possa gerenciar essa máquina.
+- Todos os dispositivos podem ser acessados diretamente pelo IP e estão no mesmo segmento de rede.
+
+Seguir uma convenção de nomenclatura eficiente para máquinas é fundamental em uma cultura DevOps, pois facilita o gerenciamento, automação e colaboração entre equipes. Aqui estão algumas boas práticas e recomendações para nomear suas máquinas, baseadas em um modelo claro e estruturado:
+
+### Recomendações para Nomenclatura
+
+1. **Descritiva e Padronizada:** Cada nome de máquina deve ser descritivo, indicando seu propósito, local, função ou ambiente. Use um padrão consistente para facilitar o gerenciamento e a automação.
+   
+2. **Evite Caracteres Especiais e Espaços:** Mantenha os nomes simples, sem caracteres especiais, como `#`, `@`, `!`, ou espaços, para evitar problemas de compatibilidade com scripts e ferramentas automatizadas.
+
+3. **Categorias Sugeridas para Nomes:**
+   - **Ambiente:** Indique o ambiente em que a máquina está rodando, como `PRD` (Produção), `DEV` (Desenvolvimento), `STG` (Homologação/Stage), `QA` (Qualidade).
+   - **Função:** Identifique o papel da máquina, como `WEB`, `DB`, `APP`, `SRV` (servidor genérico).
+   - **Localização ou Cluster:** Se aplicável, inclua a região geográfica, datacenter ou cluster da máquina, como `USW1` (usando abreviações de regiões AWS ou Azure, por exemplo), ou `SP` para São Paulo.
+   - **Número Sequencial:** Um número sequencial para distinguir máquinas semelhantes, como `01`, `02`, `03`.
+
+### Modelo Sugerido:
+
+**[Ambiente]-[Função]-[Localização]-[Número]**
+
+Exemplos:
+
+- **PRD-WEB-USW1-01:** Servidor web em produção no datacenter da costa oeste dos EUA, instância 1.
+- **DEV-DB-SP-02:** Servidor de banco de dados no ambiente de desenvolvimento, localizado em São Paulo, instância 2.
+- **STG-APP-USW1-03:** Servidor de aplicação no ambiente de homologação, na região da costa oeste dos EUA.
+
+### Aplicação ao Seu Caso
+
+Com base no seu laboratório e usando a sua rede, você poderia adaptar o modelo da seguinte forma:
+
+- **Ambiente:** Para o seu estudo, poderia ser algo como `LAB` (laboratório), ou usar `DEV`.
+- **Função:** Especifique a função da máquina, como `ANS` (Ansible), `APP`, `DB`, `WIN`.
+- **Localização:** Como se trata de um laboratório, você pode omitir ou usar algo como `VM`.
+- **Número Sequencial:** Use números para diferenciar as máquinas.
+
+**Modelo Final para Seu Lab:**
+
+- **LAB-ANS-VM-01**: Control Node do Ansible
+- **LAB-DB-VM-02**: Servidor de banco de dados Linux
+- **LAB-WIN-VM-03**: Servidor Windows
+
+Isso mantém seus nomes curtos, claros e fáceis de entender, além de flexíveis para futuras expansões.
+
+```text
+Select your language            = English
+Keyboard configuration          = Portuguese (Brazil)
+Choose the type of installation = Ubuntu Server
+Additional options              = Search for third-party drivers
+Network configuration           = enp0s3 eth DHCPv4 10.0.2.15/24
+Your name                       = Ansible para SysAdmin
+Your server name                = lab-ans-srv01
+Pick a username                 = ansible
+Password                        = Minh@Senh@123
+Upgrade to Ubuntu Pro           = Skip for now
+SSH configuration               = Install OpenSSH server
+```
+
+---
+
+## Dia 08 - Coming soon
 
 ![coming soon](./Imagens/Ansible-ComingSoon.png)
 
 ---
 
-### Ordem de prioridade
+### Revisão apontamentos Montagem do Laboratório
