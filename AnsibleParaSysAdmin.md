@@ -594,13 +594,58 @@ Página para documentação do arquivo ansible-config [Link para página da docu
 
 ---
 
-## Dia 07 - Montagem do Laboratório
+## Dia 07
 
 ---
 
-### Download Ubuntu Server 24.04.1 LTS
+## Montagem do Laboratório
 
-Página oficial Ubuntu para Download ISO [Link para página Ubuntu Server 24.04.1 LTS](https://ubuntu.com/download/server/thank-you?version=24.04.1&architecture=amd64&lts=true)
+### Considerações de Configuração
+
+- **Ansible Control Node (`VSC-NBK08`)** Deve ter o SSH habilitado e configurado para comunicação com os servidores Linux (`LAB-ANS-SRV01`, `LAB-ANS-SRV02`).
+- **WinRM** Deve ser configurado no Windows Server (`LAB-ANS-SRV03`) para que o Ansible possa gerenciar essa máquina.
+- Todos os dispositivos podem ser acessados diretamente pelo IP e estão no mesmo segmento de rede.
+
+Em nossos estudos, além da premissa de aprender Ansible, também desejamos desenvolver uma cultura DevOps, que visa o gerenciamento, automação e colaboração entre equipes e neste sentido, seguir uma convenção de nomenclatura eficiente para nossas máquinas é fundamental. Assim seguiremos algumas boas práticas e recomendações para nemea-las, baseando-se em um modelo claro e estruturado.
+
+### Recomendações para Nomenclatura
+
+1. **Descritiva e Padronizada:** Cada nome de máquina deve ser descritivo, indicando seu propósito, local, função ou ambiente. Use um padrão consistente para facilitar o gerenciamento e a automação.
+
+2. **Evite Caracteres Especiais e Espaços:** Mantenha os nomes simples, sem caracteres especiais, como `#`, `@`, `!`, ou espaços, para evitar problemas de compatibilidade com scripts e ferramentas automatizadas.
+
+3. **Categorias Sugeridas para Nomes:**
+   - **Ambiente:** Indique o ambiente em que a máquina está rodando, como `PRD` (Produção), `DEV` (Desenvolvimento), `STG` (Homologação/Stage), `QA` (Qualidade).
+   - **Função:** Identifique o papel da máquina, como `WEB`, `DB`, `APP`, `SRV` (servidor genérico).
+   - **Localização ou Cluster:** Se aplicável, inclua a região geográfica, datacenter ou cluster da máquina, como `USW1` (usando abreviações de regiões AWS ou Azure, por exemplo), ou `SP` para São Paulo.
+   - **Número Sequencial:** Um número sequencial para distinguir máquinas semelhantes, como `01`, `02`, `03`.
+
+### Modelo Sugerido
+
+**[Ambiente]-[Função]-[Localização]-[Número]**
+
+Exemplos:
+
+- **PRD-WEB-USW1-01:** Servidor web em produção no datacenter da costa oeste dos EUA, instância 1.
+- **DEV-DB-SP-02:** Servidor de banco de dados no ambiente de desenvolvimento, localizado em São Paulo, instância 2.
+- **STG-APP-USW1-03:** Servidor de aplicação no ambiente de homologação, na região da costa oeste dos EUA.
+
+### Aplicação ao Nosso Laboratório
+
+Com base em nossa configuração de rede, adaptaremos o modelo da seguinte forma:
+
+- **Ambiente:** Para nosso estudo, usaremos `LAB` (laboratório).
+- **Função:** Especificaremos sua função como `ANS` (Ansible).
+- **Localização:** Como se trata de um laboratório, omitiremos este valor e usaremos apenas `SRV` para caracterizar que se trata de um servidor.
+- **Número Sequencial:** Usaremos números para diferenciar as máquinas.
+
+**Modelo Final para nosso Labortatório:**
+
+- **LAB-ANS-SRV01**: Control Node do Ansible
+- **LAB-ANS-SRV02**: Servidor Linux
+- **LAB-ANS-SRV03**: Servidor Windows
+
+Isso manterá os nomes curtos, claros e fáceis de entender, além de flexíveis para futuras expansões.
 
 ### Layout da Rede do Laboratório
 
@@ -653,56 +698,23 @@ Página oficial Ubuntu para Download ISO [Link para página Ubuntu Server 24.04.
 
 ### Topologia da Rede
 
-- **Control Node (`VSC-NBK08`)** orquestra as VMs Linux (`LAB-ANS-SRV01`, `LAB-ANS-SRV02`) e a VM Windows (`LAB-ANS-SRV04`).
+- **Control Node (`VSC-NBK08`)** Orquestra as VMs Linux (`LAB-ANS-SRV01`, `LAB-ANS-SRV02`) e a VM Windows (`LAB-ANS-SRV04`).
 - Todos os servidores estão na rede **192.168.0.x** e têm IPs fixos, começando a partir de **192.168.0.100**.
 - O gateway é **192.168.0.1** e todos os dispositivos estão conectados via **modo Bridge** no VirtualBox, o que garante que façam parte da mesma rede local.
 
-### Considerações de Configuração
+---
 
-- **Ansible Control Node (`VSC-NBK08`)** deve ter o SSH habilitado e configurado para comunicação com os servidores Linux (`LAB-ANS-SRV01`, `LAB-ANS-SRV02`).
-- **WinRM** deve ser configurado no Windows Server (`LAB-ANS-SRV03`) para que o Ansible possa gerenciar essa máquina.
-- Todos os dispositivos podem ser acessados diretamente pelo IP e estão no mesmo segmento de rede.
+## Dia 08
 
-Seguir uma convenção de nomenclatura eficiente para máquinas é fundamental em uma cultura DevOps, pois facilita o gerenciamento, automação e colaboração entre equipes. Aqui estão algumas boas práticas e recomendações para nomear suas máquinas, baseadas em um modelo claro e estruturado:
+---
 
-### Recomendações para Nomenclatura
+### Download Ubuntu Server 24.04.1 LTS
 
-1. **Descritiva e Padronizada:** Cada nome de máquina deve ser descritivo, indicando seu propósito, local, função ou ambiente. Use um padrão consistente para facilitar o gerenciamento e a automação.
-   
-2. **Evite Caracteres Especiais e Espaços:** Mantenha os nomes simples, sem caracteres especiais, como `#`, `@`, `!`, ou espaços, para evitar problemas de compatibilidade com scripts e ferramentas automatizadas.
+Página oficial Ubuntu para Download da ISO: [Link para página Ubuntu Server 24.04.1 LTS](https://ubuntu.com/download/server/thank-you?version=24.04.1&architecture=amd64&lts=true)
 
-3. **Categorias Sugeridas para Nomes:**
-   - **Ambiente:** Indique o ambiente em que a máquina está rodando, como `PRD` (Produção), `DEV` (Desenvolvimento), `STG` (Homologação/Stage), `QA` (Qualidade).
-   - **Função:** Identifique o papel da máquina, como `WEB`, `DB`, `APP`, `SRV` (servidor genérico).
-   - **Localização ou Cluster:** Se aplicável, inclua a região geográfica, datacenter ou cluster da máquina, como `USW1` (usando abreviações de regiões AWS ou Azure, por exemplo), ou `SP` para São Paulo.
-   - **Número Sequencial:** Um número sequencial para distinguir máquinas semelhantes, como `01`, `02`, `03`.
+#### Opções de Configuração das VMs Linux
 
-### Modelo Sugerido:
-
-**[Ambiente]-[Função]-[Localização]-[Número]**
-
-Exemplos:
-
-- **PRD-WEB-USW1-01:** Servidor web em produção no datacenter da costa oeste dos EUA, instância 1.
-- **DEV-DB-SP-02:** Servidor de banco de dados no ambiente de desenvolvimento, localizado em São Paulo, instância 2.
-- **STG-APP-USW1-03:** Servidor de aplicação no ambiente de homologação, na região da costa oeste dos EUA.
-
-### Aplicação ao Seu Caso
-
-Com base no seu laboratório e usando a sua rede, você poderia adaptar o modelo da seguinte forma:
-
-- **Ambiente:** Para o seu estudo, poderia ser algo como `LAB` (laboratório), ou usar `DEV`.
-- **Função:** Especifique a função da máquina, como `ANS` (Ansible), `APP`, `DB`, `WIN`.
-- **Localização:** Como se trata de um laboratório, você pode omitir ou usar algo como `VM`.
-- **Número Sequencial:** Use números para diferenciar as máquinas.
-
-**Modelo Final para Seu Lab:**
-
-- **LAB-ANS-VM-01**: Control Node do Ansible
-- **LAB-DB-VM-02**: Servidor de banco de dados Linux
-- **LAB-WIN-VM-03**: Servidor Windows
-
-Isso mantém seus nomes curtos, claros e fáceis de entender, além de flexíveis para futuras expansões.
+Durante a instalação do Ubuntu Server 24.04.1 LTS, as seguintes opções foram escolhidas:
 
 ```text
 Select your language            = English
@@ -718,12 +730,62 @@ Upgrade to Ubuntu Pro           = Skip for now
 SSH configuration               = Install OpenSSH server
 ```
 
+#### Ações Adicionais pós Instalação
+
+1. **Configuração da Rede**: Após a instalação, ajuste a rede para o modo Bridge, pois o padrão é que ela fique em modo NAT. Em seguida, execute o script `ConfigurarRedeComIpFixo.sh` para configurar o endereço de rede desejado. Certifique-se de que o script está configurado corretamente para definir o IP fixo e outras configurações de rede necessárias.
+
+    ```bash
+    sudo ./ConfigurarRedeComIpFixo.sh
+    ```
+
+2. **Instalação dos Adicionais de Convidado do VirtualBox**: Após a instalação do sistema operacional, instale os Adicionais de Convidado do VirtualBox para melhorar a integração entre o host e a VM. Siga os passos abaixo:
+
+    - **Passo 1**: Atualize o sistema e instale os pacotes necessários:
+
+        ```bash
+        sudo apt update
+        sudo apt upgrade -y
+        sudo apt install build-essential dkms linux-headers-$(uname -r) -y
+        ```
+
+    - **Passo 2**: Insira a imagem dos Adicionais de Convidado do VirtualBox:
+
+        No menu do VirtualBox, vá em **Dispositivos** > **Inserir imagem de CD dos Adicionais de Convidado...**
+
+    - **Passo 3**: Monte o CD-ROM e execute o instalador:
+
+        ```bash
+        sudo mount /dev/cdrom /mnt
+        sudo /mnt/VBoxLinuxAdditions.run
+        ```
+
+    - **Passo 4**: Reinicie a VM para aplicar as mudanças:
+
+        ```bash
+        sudo reboot
+        ```
+
+3. **Segurança**: Considere usar uma senha mais complexa e única para cada VM para aumentar a segurança. Além disso, desabilite o login de root via SSH e utilize autenticação por chave pública.
+
+4. **Configuração Adicional do SSH**: Para maior segurança, edite o arquivo de configuração do SSH (`/etc/ssh/sshd_config`) para desabilitar o login de root e permitir apenas autenticação por chave pública:
+
+    ```text
+    PermitRootLogin no
+    PasswordAuthentication no
+    ```
+
+    Após fazer essas alterações, reinicie o serviço SSH:
+
+    ```bash
+    sudo systemctl restart ssh
+    ```
+
 ---
 
-## Dia 08 - Coming soon
+## Dia 09 - Coming soon
 
 ![coming soon](./Imagens/Ansible-ComingSoon.png)
 
 ---
 
-### Revisão apontamentos Montagem do Laboratório
+### Continuidade da Montagem do Laboratório
