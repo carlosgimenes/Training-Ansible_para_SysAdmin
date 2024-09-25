@@ -91,7 +91,7 @@ Documentação oficial do Ansible [Link para página da documentação oficial d
 
 #### Representação gráfica da Arquitetura do Ansible
 
-![Arquitetura do Ansible](./Imagens/Ansible-Arquitetura.png)
+![Arquitetura do Ansible](./images/Ansible-Arquitetura.png)
 
 #### Como ele funciona?
 
@@ -145,7 +145,7 @@ Documentação do YAML - Ansible [Link para página documentação YAML no Ansib
 
 #### Exemplo de estrutura Mapas e Lista
 
-![Estrutura de Mapas e Listas no Ansible](./Imagens/Ansible-EstruturaMapasLista.png)
+![Estrutura de Mapas e Listas no Ansible](./images/Ansible-EstruturaMapasLista.png)
 
 #### Onde o YAML é usado?
 
@@ -203,15 +203,15 @@ A validação de arquivos **YAML** é crucial para garantir que não haja erros 
 
 #### Onde criar meu ambiente de laboratório?
 
-![Alternativas para ambiente de laboratório](./Imagens/Ansible-OndeCriarMeuAmbiente.png)
+![Alternativas para ambiente de laboratório](./images/Ansible-OndeCriarMeuAmbiente.png)
 
 #### Qual sistema operacional escolher?
 
-![Qual sistema operacional escolher](./Imagens/Ansible-QualSistemaOperacionalEscolher.png)
+![Qual sistema operacional escolher](./images/Ansible-QualSistemaOperacionalEscolher.png)
 
 #### Ambiente utilizado pelo Instrutor
 
-![Ambiente utilizado pelo Instrutor](./Imagens/Ansible-AmbienteUtilizadoPeloInstrutor.png)
+![Ambiente utilizado pelo Instrutor](./images/Ansible-AmbienteUtilizadoPeloInstrutor.png)
 
 #### Realizando Testes no Laboratório
 
@@ -356,7 +356,7 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
     pip3 --version
     ```
 
-    ![Retorno do comando pip](./Imagens/Ansible-RetornoComandoPip.png)
+    ![Retorno do comando pip](./images/Ansible-RetornoComandoPip.png)
 
 2. **Atualizar o PIP**:
 
@@ -376,7 +376,7 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
     ansible --version
     ```
 
-    ![Retorno do comando ansible --version](./Imagens/Ansible-RetornoComandoAnsibleVersionViaPip.png)
+    ![Retorno do comando ansible --version](./images/Ansible-RetornoComandoAnsibleVersionViaPip.png)
 
     **Obs.**: Quando o Ansible é instalado via `pip`, por padrão ele não cria o arquivo `/etc/ansible/ansible.cfg`, devendo ser criado manualmente.
 
@@ -407,7 +407,7 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
     ansible --version
     ```
 
-    ![Retorno do comando ansible --version](./Imagens/Ansible-RetornoComandoAnsibleVersionViaApt.png)
+    ![Retorno do comando ansible --version](./images/Ansible-RetornoComandoAnsibleVersionViaApt.png)
 
     **Desinstalação via apt**:
 
@@ -431,7 +431,7 @@ Neste exemplo, faremos a instalação em uma distribuição Red Hat, optando pel
     ansible --version
     ```
 
-    ![Retorno do comando ansible --version](./Imagens/Ansible-RetornoComandoAnsibleVersionViaYum.png)
+    ![Retorno do comando ansible --version](./images/Ansible-RetornoComandoAnsibleVersionViaYum.png)
 
     **Desinstalação via yum**:
 
@@ -471,7 +471,7 @@ Quando executamos uma linha ad-hoc ou um playbook, o Ansible segue uma ordem de 
 3. **~/ansible.cfg**: Procura pelo `ansible.cfg` no diretório home do usuário. Se encontrado, ele será utilizado.
 4. **/etc/ansible/ansible.cfg**: Por último, procura pelo `ansible.cfg` no diretório `/etc/ansible/`. Se encontrado, ele será utilizado.
 
-![Ordem de Prioridade e Interpretação do ansible.cfg](./Imagens/Ansible-OrdemPrioridadeInterpretacaoArquivoAnsibleCfg.png)
+![Ordem de Prioridade e Interpretação do ansible.cfg](./images/Ansible-OrdemPrioridadeInterpretacaoArquivoAnsibleCfg.png)
 
 #### Considerações de Segurança
 
@@ -784,7 +784,7 @@ SSH configuration               = Install OpenSSH server
 
 ## Dia 09 - Coming soon
 
-![coming soon](./Imagens/Ansible-ComingSoon.png)
+![coming soon](./images/Ansible-ComingSoon.png)
 
 ---
 
