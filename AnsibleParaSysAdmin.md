@@ -730,9 +730,38 @@ Upgrade to Ubuntu Pro           = Skip for now
 SSH configuration               = Install OpenSSH server
 ```
 
-#### Ações Adicionais pós Instalação
+### Ações Adicionais pós Instalação
 
 1. **Configuração da Rede**: Após a instalação, ajuste a rede para o modo Bridge, pois o padrão é que ela fique em modo NAT. Em seguida, execute o script `ConfigurarRedeComIpFixo.sh` para configurar o endereço de rede desejado. Certifique-se de que o script está configurado corretamente para definir o IP fixo e outras configurações de rede necessárias.
+
+    **Passo 1: Copiar o arquivo para a VM**
+
+    ```bash
+    scp ConfigurarRedeComIpFixo.sh ansible@192.168.0.x:/tmp
+    ```
+
+    **Passo 2: Ajustar o nome da Placa de Rede e IP no arquivo**
+
+    ```bash
+    cd /tmp
+    vi ConfigurarRedeComIpFixo.sh
+    ```
+
+    Ajuste os parâmetros: `INTERFACE="eth0"` e `IP_ADDRESS="192.168.0.x/24"`.
+
+    **Obs.:** Para identificar o nome da Placa de rede, utilize o seguinte comando:
+
+    ```bash
+    sudo lshw -class network | grep "logical name"
+    ```
+
+    **Passo 3: Ajustar permissões do arquivo para permitir execução**
+
+    ```bash
+    sudo chmod +x ConfigurarRedeComIpFixo.sh
+    ```
+
+    **Passo 4: Executar o arquivo para efetivar as alterações**
 
     ```bash
     sudo ./ConfigurarRedeComIpFixo.sh
@@ -740,7 +769,7 @@ SSH configuration               = Install OpenSSH server
 
 2. **Instalação dos Adicionais de Convidado do VirtualBox**: Após a instalação do sistema operacional, instale os Adicionais de Convidado do VirtualBox para melhorar a integração entre o host e a VM. Siga os passos abaixo:
 
-    - **Passo 1**: Atualize o sistema e instale os pacotes necessários:
+    - **Passo 1: Atualizar o sistema e instalar os pacotes necessários**
 
         ```bash
         sudo apt update
@@ -748,18 +777,18 @@ SSH configuration               = Install OpenSSH server
         sudo apt install build-essential dkms linux-headers-$(uname -r) -y
         ```
 
-    - **Passo 2**: Insira a imagem dos Adicionais de Convidado do VirtualBox:
+    - **Passo 2: Inserir a imagem dos Adicionais de Convidado do VirtualBox**
 
         No menu do VirtualBox, vá em **Dispositivos** > **Inserir imagem de CD dos Adicionais de Convidado...**
 
-    - **Passo 3**: Monte o CD-ROM e execute o instalador:
+    - **Passo 3: Montar o CD-ROM e executar o instalador**
 
         ```bash
         sudo mount /dev/cdrom /mnt
         sudo /mnt/VBoxLinuxAdditions.run
         ```
 
-    - **Passo 4**: Reinicie a VM para aplicar as mudanças:
+    - **Passo 4: Reiniciar a VM para aplicar as mudanças**
 
         ```bash
         sudo reboot
@@ -782,7 +811,17 @@ SSH configuration               = Install OpenSSH server
 
 ---
 
-## Dia 09 - Coming soon
+## Dia 09
+
+---
+
+### Continuidade da Montagem do Laboratório
+
+Efetuada a revisão do item **Ações Adicionais pós Instalação**, incluindo etapas adicionais para configuração da rede e criação da segunda máquina de nosso laboratório.
+
+---
+
+## Dia 10 - Coming soon
 
 ![coming soon](./images/Ansible-ComingSoon.png)
 
