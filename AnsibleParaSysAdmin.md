@@ -821,10 +821,67 @@ Efetuada a revisão do item **Ações Adicionais pós Instalação**, incluindo 
 
 ---
 
-## Dia 10 - Coming soon
+## Dia 10
+
+---
+
+### ansible-config Hands-on
+
+Vamos treinar as principais opções deste comando e observar seu comportamento.
+
+1. **Verificar a versão do Ansible**:
+   Execute `ansible-config --version` para verificar a versão do Ansible e outras informações de configuração, como o caminho de busca dos módulos.
+
+   ![Retorno do comando ansible-config --version](./images/Ansible-HandsOnRetorno1.png)
+
+2. **Obter uma visão geral das opções**:
+   Execute `ansible-config --help` para obter uma visão geral das opções e funcionalidades disponíveis para o comando `ansible-config`.
+
+   ![Retorno do comando ansible-config --help](./images/Ansible-HandsOnRetorno2.png)
+
+---
+
+## Dia 11
+
+---
+
+### ansible-config Hands-on (Continuação)
+
+3. **Ajuda rápida**:
+   Execute `ansible-config --h` para obter a mesma ajuda que `ansible-config --help`.
+
+   ![Retorno do comando ansible-config --h](./images/Ansible-HandsOnRetorno3.png)
+
+4. **Listar todas as configurações**:
+   Execute `ansible-config list` para listar todas as configurações que podem ser ajustadas no Ansible.
+
+   ![Retorno do comando ansible-config list](./images/Ansible-HandsOnRetorno4.png)
+
+5. **Configurações do "become"**:
+   Execute `ansible-config list -t become` para listar todas as configurações relacionadas ao recurso "become" no Ansible. O "become" é uma funcionalidade que permite a um usuário executar tarefas com permissões elevadas, como o sudo no Linux.
+
+   ![Retorno do comando ansible-config list -t become](./images/Ansible-HandsOnRetorno5.png)
+
+6. **Filtrando saídas extensas**:
+   A saída destes comandos pode ser bastante extensa, dificultando sua visualização. Para simplificar e tornar a busca mais objetiva, podemos usar o comando `grep` para filtrar a saída e mostrar apenas a linha que contém um determinado parâmetro. Por exemplo:
+
+   ```bash
+   ansible-config list -t connection | grep host_key_checking
+   ```
+
+   ![Retorno do comando ansible-config list -t connection com grep](./images/Ansible-HandsOnRetorno6.png)
+
+7. **Criando um arquivo ansible.cfg a partir de uma configuração padrão**:
+  Execute `ansible-config init -t shell > ansible.cfg` para criar um novo arquivo `ansible.cfg` que contém todas as configurações padrão para o tipo "shell". Isso é útil para personalizar e ajustar as configurações de acordo com necessidades específicas.
+
+  ![Retorno do comando ansible-config init -t shell](./images/Ansible-HandsOnRetorno7.png)
+
+---
+
+## Dia 12 - Coming soon
 
 ![coming soon](./images/Ansible-ComingSoon.png)
 
 ---
 
-### Continuidade da Montagem do Laboratório
+### Ordem de Prioridade
