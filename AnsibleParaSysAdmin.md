@@ -878,10 +878,58 @@ Vamos treinar as principais opções deste comando e observar seu comportamento.
 
 ---
 
-## Dia 12 - Coming soon
+## Dia 12
+
+---
+
+### Ordem de Prioridade Interpretação do Arquivo ansible.cfg
+
+Quando executamos uma linha ad-hoc ou um playbook, o Ansible segue uma ordem de prioridade para localizar o arquivo `ansible.cfg`:
+
+1. **$ANSIBLE_CONFIG**: Procura pelo `ansible.cfg` na variável de ambiente `$ANSIBLE_CONFIG`. Se encontrado, utiliza o caminho especificado.
+2. **./ansible.cfg**: Procura pelo `ansible.cfg` no diretório corrente. Se encontrado, ele será utilizado.
+3. **~/ansible.cfg**: Procura pelo `ansible.cfg` no diretório home do usuário. Se encontrado, ele será utilizado.
+4. **/etc/ansible/ansible.cfg**: Por último, procura pelo `ansible.cfg` no diretório `/etc/ansible/`. Se encontrado, ele será utilizado.
+
+![Ordem de Prioridade e Interpretação do ansible.cfg](./images/Ansible-OrdemPrioridadeInterpretacaoArquivoAnsibleCfg.png)
+
+A seguir faremos alguns laboratórios para validar esta Ordem de Prioridade.
+
+Em nosso Ansible Management Node (`VSC-NBK08`) iremos fazer três cópias do nosso arquivo `ansible.cfg` e distriui-los da seguinte forma:
+
+- **Cópia 1**:
+  - `cd /etc/ansible`
+  - `cp -pr ansible.cfg /tmp`
+  - Após realizar a cópia, edite o arquivo e altere a porta ssh (parâmetro **remote_port**) para 62221
+  - Em seguida execute: `export ANSIBLE_CONFIG=/tmp/ansible.cfg`
+  - Para conferir execute: `echo $ANSIBLE_CONFIG` o retorno deve ser `/tmp/ansible.cfg`
+
+- **Cópia 2**:
+  - `cd /tmp`
+  - `mkdir teste`
+  - `cp -pr /etc/ansible/ansible.cfg .`
+  - Após realizar a cópia, edite o arquivo e altere a porta ssh (parâmetro **remote_port**) para 62222
+
+- **Cópia 3**:
+  - `cd /home/nomeusuario/`
+  - `cp -pr /etc/ansible/ansible.cfg ./.ansible.cfg`
+  - Certifique-se que o arquivo foi copiado corretamente: `ls -alh ~/.ansible.cfg`
+
+Após realizarmos estes procedimentos, deveremos ter o arquivo `ansible.cfg` distribuido da seguinte forma:
+
+- **Arquivo 1**: `/etc/ansible/ansible.cfg` com parâmetro **remote_port** apontando para porta 22
+- **Arquivo 2**: `/tmp/ansible.cfg` com parâmetro **remote_port** apontando para porta 62221
+- **Arquivo 3**: `/tmp/teste/ansible.cfg` com parâmetro **remote_port** apontando para porta 62222
+- **Arquivo 4**: `/home/nomeusuario/ansible.cfg` com parâmetro **remote_port** apontando para porta 22
+
+Agora vamos testar e validar a ordem de busca pelo arquivo `ansible.cfg`
+
+---
+
+## Dia 13 - Coming soon
 
 ![coming soon](./images/Ansible-ComingSoon.png)
 
 ---
 
-### Ordem de Prioridade
+### A definir
